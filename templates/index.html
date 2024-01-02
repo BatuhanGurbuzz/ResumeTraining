@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
-
+{% load static %}
 {% block content %}
 
 <div class="row">
   <div class="col-md-12">
-  <h1>
+  <h1 class="myHeader">
     Resume App
   </h1>  
   </div>
@@ -23,7 +23,7 @@
   Repellat, nesciunt nisi. Sint adipisci possimus impedit sequi.
 </p>
 <div class="card" style="width: 18rem">
-  <img src="https://placehold.co/600x400" class="card-img-top" alt="..." />
+  <img src="{% get_media_prefix %}ben.jpg" class="card-img-top" alt="..." />
   <div class="card-body">
     <h5 class="card-title">Card title</h5>
     <p class="card-text">
