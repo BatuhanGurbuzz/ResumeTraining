@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'rest_framework',
     'django_extensions',
+    'contact.apps.ContactConfig',
 ]
 
 MIDDLEWARE = [
