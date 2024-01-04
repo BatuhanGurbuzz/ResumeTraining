@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from core.models import GeneralSetting, ImageSetting, Skill, SocialMedia, Document
 # Create your views here.
 
-def index(request):
+def layout(request):
+    
     # General Settings Start #
     
     # Site Settings Start #
@@ -49,10 +50,12 @@ def index(request):
     
     # Social Media Ends #
     
-    # Documents Starts #
+    # Document Starts #
+    
     documents = Document.objects.all()
-    # Documents Ends #
-        
+    
+    # Document Ends #
+    
     context = {
         'site_title': site_title,
         'site_keywords': site_keywords,
@@ -69,9 +72,12 @@ def index(request):
         'social_medias':social_medias,
         'documents':documents,
     }
-    
-    
-    return render(request, 'index.html', context = context)
+    return context
+
+
+
+def index(request):
+    return render(request, 'index.html')
 
 
 def redirect_urls(request, slug):
