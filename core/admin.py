@@ -21,10 +21,19 @@ class ImageSettingAdmin(admin.ModelAdmin):
         model = ImageSetting
         
 @admin.register(Skill)
-class ImageSettingAdmin(admin.ModelAdmin):
+class SkillSettingAdmin(admin.ModelAdmin):
     list_display = ['id', 'order', 'name', 'percentage', 'updatedDate', 'createdDate']
     search_fields = ['name']
     list_editable = ['order', 'name', 'percentage']
     
     class Meta:
         model = Skill
+        
+@admin.register(SocialMedia)
+class SocialMediaSettingAdmin(admin.ModelAdmin):
+    list_display = ['id', 'order', 'link', 'icon', 'updatedDate', 'createdDate']
+    search_fields = ['link', 'icon']
+    list_editable = ['order', 'link', 'icon']
+    
+    class Meta:
+        model = SocialMedia

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.models import GeneralSetting, ImageSetting, Skill
+from core.models import GeneralSetting, ImageSetting, Skill, SocialMedia
 # Create your views here.
 
 def index(request):
@@ -43,6 +43,11 @@ def index(request):
     
     # Skill Ends #
     
+    # Social Media Starts #
+    
+    social_medias = SocialMedia.objects.all()
+    
+    # Social Media Ends #
         
     context = {
         'site_title': site_title,
@@ -57,6 +62,7 @@ def index(request):
         'site_favicon':site_favicon,
         'nav_logo':nav_logo,
         'skills':skills,
+        'social_medias':social_medias,
     }
     
     

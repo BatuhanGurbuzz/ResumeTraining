@@ -19,9 +19,13 @@
 									<li><a href="mailto:batuhang002@gmail.com"><i class="lnr lnr-envelope"></i>batuhang002@gmail.com</a></li>
 								</ul>
 								<ul class="list personal_social">
-									<li><a href="https://www.instagram.com/ba2.cpp/?next=%2F" target="_blank"><i class="fa fa-instagram"></i></a></li>
-									<li><a href="https://github.com/BatuhanGurbuzz" target="_blank"><i class="fa fa-github"></i></a></li>
-									<li><a href="https://www.linkedin.com/in/batuhan-gurbuzz/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+									{% for social in social_medias %}
+										<li>
+											<a href="{{ social.link }}" target="_blank">
+												{{ social.icon | safe }}
+											</a>
+										</li>
+									{% endfor %}	
 								</ul>
 							</div>
 						</div>
