@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.models import GeneralSetting, ImageSetting
+from core.models import GeneralSetting, ImageSetting, Skill
 # Create your views here.
 
 def index(request):
@@ -36,7 +36,12 @@ def index(request):
     
     # Image Settings End #
     
+    # Skill Starts #
     
+    skills = Skill.objects.all().order_by('order')
+    
+    
+    # Skill Ends #
     
         
     context = {
@@ -51,6 +56,7 @@ def index(request):
         'home_banner_image':home_banner_image,
         'site_favicon':site_favicon,
         'nav_logo':nav_logo,
+        'skills':skills,
     }
     
     

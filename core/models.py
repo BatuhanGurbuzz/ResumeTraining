@@ -1,6 +1,26 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
-class GeneralSetting(models.Model):
+class AbstractModel(models.Model):
+    updatedDate = models.DateField(
+        blank = True,
+        auto_now = True,
+        verbose_name = 'Updated Date',
+        help_text = ''
+    )
+    
+    createdDate = models.DateField(
+        blank = True,
+        auto_now_add = True,
+        null = True,
+        verbose_name = 'Created Date',
+        help_text = ''
+    )
+    
+    class Meta:
+        abstract = True
+
+class GeneralSetting(AbstractModel):
     name = models.CharField(
         default = '',
         max_length = 255,
@@ -25,20 +45,7 @@ class GeneralSetting(models.Model):
         help_text = ''
     )
     
-    updatedDate = models.DateField(
-        blank = True,
-        auto_now = True,
-        verbose_name = 'Updated Date',
-        help_text = ''
-    )
     
-    createdDate = models.DateField(
-        blank = True,
-        auto_now_add = True,
-        null = True,
-        verbose_name = 'Created Date',
-        help_text = ''
-    )
     
     def __str__(self):
         return f"General Setting: {self.name}"
@@ -51,7 +58,7 @@ class GeneralSetting(models.Model):
         ordering = ('name',)
         
 
-class ImageSetting(models.Model):
+class ImageSetting(AbstractModel):
          
     name = models.CharField(
         default = '',
@@ -76,21 +83,7 @@ class ImageSetting(models.Model):
         blank=True,
         upload_to= 'images/'
     )
-    
-    updatedDate = models.DateField(
-        blank = True,
-        auto_now = True,
-        verbose_name = 'Updated Date',
-        help_text = ''
-    )
-    
-    createdDate = models.DateField(
-        blank = True,
-        auto_now_add = True,
-        null = True,
-        verbose_name = 'Created Date',
-        help_text = ''
-    )
+       
     
     def __str__(self):
         return f"Image Setting: {self.name}"
@@ -101,3 +94,32 @@ class ImageSetting(models.Model):
         verbose_name_plural = 'Image Settings'
         
         ordering = ('name',)
+        
+class Skill(AbstractModel):
+    order = models.IntegerField(
+        default = 0,
+        verbose_name = 'Order',
+    )
+    name = models.CharField(
+        default = '',
+        max_length = 255,
+        blank = True,
+        verbose_name = 'Name',
+        help_text = 'This is variable of the setting'
+    )
+    
+    percentage = models.IntegerField(
+        default = 50,
+        verbose_name = 'Percentage',
+        validators = [MinValueValidator(0), MaxValueValidator(100)]
+    )
+    
+    def __str__(self):
+        return f"Skill: {self.name}"
+    
+    class Meta:
+        verbose_name = 'Skill'
+        
+        verbose_name_plural = 'Skills'
+        
+        ordering = ('order',)
