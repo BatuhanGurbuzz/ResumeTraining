@@ -84,10 +84,7 @@ WSGI_APPLICATION = "DjangoWebSite.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': env.db()
 }
 
 
@@ -142,10 +139,10 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Email Settings
-vars().update(env.email_url())
+# # Email Settings
+# vars().update(env.email_url())
 
-DEFAULT_FROM_EMAIL = 'Batuhan GURBUZ <info@batuhangurbuz.com>'
+# DEFAULT_FROM_EMAIL = 'Batuhan GURBUZ <info@batuhangurbuz.com>'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
